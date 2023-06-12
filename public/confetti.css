@@ -1,0 +1,58 @@
+body{
+    overflow: hidden;
+    background: rgb(19,136,8);
+    background: linear-gradient(84deg, rgba(19,136,8,1) 0%, rgba(255, 255, 255, 0.6) 25%, rgba(255,255,255,0.6) 69%, rgba(255,153,51,0.6) 89%);
+}
+
+#confetti-canvas{
+    position: absolute;
+    top: 0px !important;
+}
+
+.popup{
+    position: absolute;
+    z-index: 0;
+    background-image: url(/public/shrikrishna.jpg);
+    height: 200px;
+    width: 440px;
+    top: 45%;
+    left: 50%;
+    opacity: 1 !important;
+    transform: translate(-50%, -50%);
+}
+.tq{
+    position: relative;
+    font-family: 'Yellowtail', cursive;
+    font-size: 55px;
+    top: -34px;
+    right: -20px;
+    opacity: 1 !important;
+    margin-bottom: 5px;
+    text-decoration: underline deeppink;
+}
+
+.gohome{
+    position: relative;
+    left: 144px;
+    padding: 9px;
+    font-size: 32px;
+    font-family: 'VT323', monospace;
+    border: none;
+    color: white;
+    opacity: 1 !important;
+    background-color: #000080;
+    cursor: pointer;
+}
+
+.gohome:focus{
+    font-size: 30px;
+}
+.namaste{
+    position: absolute;
+    z-index: -1;
+    height: 526px;
+    width: 505px;
+    left: 529px;
+    top: 125px;
+    opacity: 0.15;
+}

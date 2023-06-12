@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shresthar Gujarat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="homepage.css">
+</head>
+<body>
+    <div class="header">
+        <div class="emblem"><img src="ourpride.svg" alt="" srcset=""></div>
+        <div class="logo"><img src="official_logo.png" alt="" srcset=""></div>
+        <div class="sbharat"><img src="sbharat.png" alt="" srcset=""></div>
+        <div class="humdo"><img src="humdo.png" alt="" srcset=""></div>
+        <div class="beti"><img src="betibachao.png" alt="" srcset=""></div>
+        <div class="mindia"><img src="mindia.png" alt="" srcset=""></div>
+        <div class="dindia"><img src="dindia.png" alt="" srcset=""></div>
+    </div>
+    <div class="banner">
+        <img src="modiji.jpg" alt="" srcset="">
+    </div>
+    <form action="/homepage" method="post">
+        <button type ="submit" class="complain_button" onclick="location.href = '/login'">Make Complaint</button>
+    </form>
+    <button type ="button" class="track_button" onclick="location.href = '/track'">Track Your Complaint</button>
+    <div class="content">
+        <div class="slide" id="slide1">
+            <div class="slide_img"><img src="complain.jpg" alt=""></div>
+            <div class="reading">
+                <div class="heading">Why Complain???</div>
+            <div class="para">Criticism is also a form of communication. And if criticism reaches to 
+the government at appropriate time, then the government bodies 
+could be utilized at its full potential. And this can lead to a better 
+environment for the citizens of the country. As a citizen, it's your rigth to complain against the government. And it;s government duty to solve your probkem. Shresthar Gujarat - The only platform who let's you complain to your nearest municipal co orporation. Your problems will be listened here and also solevel as early as possible. This is not just a saying, but a PROMISE.</div>
+            </div>
+            
+        </div>
+        <div class="slide" id="slide2">
+            <div class="slide_img"><img src="citizen.jpg" alt=""></div> 
+            <div class="reading">
+                 <div class="heading">Good Citizens Make Great Nation...</div>
+                <div class="para">A citizen of a country is an individual recognized under the custom or law as being a legal member of a sovereign nation or allegiance to a government in exchange for its protection, whether at home or abroad. Citizens of a country who are considered as the legal members of a nation act as one of the dominant pillars in the process of building a nation. Dynamic co-operation from every individual citizen acts as a major contribution towards this multidimensional concept of nation-building. </div>
+            </div>
+            
+        </div>
+        <div class="slide" id="slide3">
+            <div class="slide_img" id="elon"><img src="elon.jpg" alt=""></div> 
+            <div class="reading">
+                <div class="heading">Real-Life Tony Stark Also Supports Us:::</div>
+                <div class="para">Elon Musk is a business magnate and investor. He is the founder, CEO, and Chief Engineer at SpaceX; angel investor, CEO, and Product Architect of Tesla, Inc., founder of The Boring Company; and co-founder of Neuralink and OpenAI. Elon Musk has also supported this initiative by signing in the official documentation. Elon Musk said during an interview with AajTak - "Aisi hi websites, desh main badlaav laati hai. Aisi hi websites, desh ko aage badhaati hai. Aisi hi websites, asambahv ko sambhav banaati hai." </div>
+            </div>
+            
+        </div>
+        <div class="slide" id="slide4">
+            <div class="slide_img"><img src="promo.png" alt=""></div>
+            <div class="reading">
+                <div class="heading">The Indian Spotify Is HERE!!!</div>
+            <div class="para">Vaadhya is the platform where you get to listen only the best songs. This site is under Yaksh.Stark Creation built by none other than Mr. Yaksh - The Supreme. Mr. Yaksh has helped Indian government many times. And Yaksh.Stark Creation has always come ahead to help the nation. Vaadhya - A Music Streaming Website is the only website on Earth that lets you listen ad-free music in just 1 Rs per month. Isn't it Amazing? 
+            <p>COMING SOON........</p></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    window.history.pushState("", "", '/');
+
+    window.addEventListener("scroll", function(event) {
+    var top = this.scrollY;
+    console.log(top);
+    if(top > 170){
+        gsap.to("#slide1", {translateX: 0, opacity: 1, duration:1.1});
+    }
+    if(top > 430){
+        gsap.to("#slide2", {translateX: 0, opacity: 1, duration:1.1});
+    }
+    if(top > 800){
+        gsap.to("#slide3", {translateX: 0, opacity: 1, duration:1.1});
+    }
+    if(top > 1100){
+        gsap.to("#slide4", {translateX: 0, opacity: 1, duration:1.1});
+    }
+}, false);
+</script>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin Panel</title>
+    <link rel="stylesheet" href="/mncPanel.css">
+    <link rel="stylesheet" href="/superadmin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main">
+        <div class="sidebar">
+            <div class="official_logo">
+                <img src="/official_logo.png" alt="">
+            </div>
+            <div class="sideButton" id="superfindcomp_button">
+                <button onclick="location.href = '/superfind'" id="unsolvedcomps_button_text">FIND COMPLAINT</button>
+            </div>
+            <div class="sideButton" id="allmidman_button">
+                <button onclick="location.href = '/midinfo'" id="midinfo_button_text">MIDDLEMEN INFO</button>
+            </div>
+            <div class="sideButton" id="allmnc_button">
+                <button onclick="location.href = '/mncinfo'" id="mncinfo_button_text">MNC INFO</button>
+            </div>
+            <div class="sideButton" id="notifications">
+                <button onclick="location.href = '/notifications'" id="notification_button_text">NOTIFICATION</button>
+            </div>
+            <div class="sideButton" id="logout_button">
+                <form action="adminLogout" method="post">
+                    <button type="submit">LOG OUT</button>
+                </form>
+            </div>
+        </div>
+        <div class="workArea">
+            {{#if message}}
+                    <div class="message">
+                        <p class="messageText"><i class="fa-solid fa-circle-check" style="color: #54d24b;"></i> &nbsp {{sms}}</p>
+                    </div>
+                    <div class="bar">
+                        <div class="in"></div>
+                    </div>
+            {{/if}}
+            {{#if byDefault}}
+                <div class="default">
+                    <img src="welcome.png" alt="">
+                    <p>Welcome Lord <span class="admin_name">SUPER ADMIN</span></p>
+                </div>
+            {{/if}}
+            {{#if findComp}}
+                <p>Find Complaints</p>
+                <div class="find superfind">
+                    <form action="/superfindComplaint" method="post">
+                        <input type="date" name="dateToFind" id="dateToFind">
+                        <select id="areaDropBox" name="areaDropBox">
+                            <option value="empty">All Areas</option>
+                            <option value="alkapuri">Alkapuri</option>
+                            <option value="akota">Akota</option>
+                            <option value="kareilibagh">Kareilibagh</option>
+                            <option value="manjalpur">Manjalpur</option>
+                            <option value="makarpura">Makarpura</option>
+                            <option value="waghodiya">Waghodiya</option>
+                        </select>
+                        <select id="midDropBox" name="midDropBox">
+                            <option value="empty">All Middlemen</option>
+                            <option value="ethan">Ethan</option>
+                            <option value="mummy">Mummy</option>
+                            <option value="yaksh">Yaksh</option>
+                        </select>
+                        <button type="submit" class="dateToFindButton">FIND</button>
+                    </form>
+
+                    <div class="bar"></div>
+                    <form action="/superFindById" method="post">
+                        <input type="text" name="complain_id" id="superFindId" placeholder="Enter Complaint ID" required>
+                        <button type="submit" class="dateToFindButton">FIND BY ID</button>
+                    </form>
+                </div>
+                <div class="find_date">{{findDate}}</div>
+                    {{#if brougthList}}
+                        <div class="table find_table">
+                        <div class="row green">
+                            <div class="cell">
+                                Complaint ID
+                            </div>
+                            <div class="cell">
+                                Title
+                            </div>
+                            <div class="cell">
+                                Area
+                            </div>
+                            <div class="cell">
+                                Status
+                            </div>
+                            <div class="cell">
+                                Action
+                            </div>
+                        </div>
+                        {{#each cDetails}}
+                            <div class="row">
+                                <div class="cell" data-title="Complaint ID">
+                                    {{this._id}}
+                                </div>
+                                <div class="cell" data-title="Title">
+                                    {{this.complaint_topic}}
+                                </div>
+                                <div class="cell" data-title="Area">
+                                    {{this.area}}
+                                </div>
+                                <div class="cell" data-title="Status">
+                                    {{this.status.[0]}}
+                                </div>
+                                <div class="cell" data-title="Action">
+                                    <button type="submit" onclick="location.href = '/complaint/{{this._id}}'" class="open_button">OPEN</button>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                    {{/if}}
+            {{/if}}
+            {{#if complaintInfo}}
+                    <div class="complaintMainDiv">
+                        {{#with cDetails}}
+                        <div class="complaint_detail_text">COMPLAINT DETAILS</div>
+                        <div class="full_complaint_detail">
+                        <div class="complaintImage">
+                            <img src={{cam_proof}} alt="" srcset="">
+                        </div>
+                        <div class="complaintInDetail">
+                            <div class="ID">
+                                <span class="idValue">#{{_id}}</span>
+                            </div>
+                            <div class="complaintDate">
+                                <span class="dateKey key">Date: </span><span class="dateValue">&nbsp {{date}}</span>
+                            </div>
+                            <div class="complaintTopic">
+                                <span class="topicKey key">Subject: </span><span class="topicValue">&nbsp {{complaint_topic}}</span>
+                            </div>
+                            <div class="complaintDescription">
+                                <span class="descriptionKey key">Description: </span><br><span class="descriptionValue">{{complaint_desc}}</span>
+                            </div>
+                            <div class="complaintArea">
+                                <span class="areaKey key">Area: </span><span class="areaValue">&nbsp {{area}}</span>
+                            </div>
+                             <div class="complaintAddress">
+                                <span class="addressKey key">Address: </span><span class="addressValue">&nbsp {{street_adress}}</span>
+                            </div>
+                            <div class="complaintStatus">
+                                <span class="addressKey key">Status: </span><span class="addressValue">&nbsp {{status}}</span>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                        {{/with}} 
+                        {{#if deleteComplain}}
+                        {{#with cDetails}}
+                        <div class="delete_form">
+                            <form action="/deleteComplain/{{_id}}" method="post">
+                                <input type="text" name="reason_to_delete" placeholder="Mention Reason" id="" required>
+                                <button type="submit">DELETE COMPLAIN</button>
+                            </form>
+                        </div>
+                        {{/with}}
+                        {{/if}}                 
+                    </div>
+                {{/if}}
+                {{#if midInfo}}
+                    <div class="table find_table">
+                        <div class="row green">
+                            <div class="cell">
+                                Name
+                            </div>
+                            <div class="cell">
+                                Pending Complains
+                            </div>
+                            <div class="cell">
+                                Accepted Complains
+                            </div>
+                            <div class="cell">
+                                Rejected Complains
+                            </div>
+                            <div class="cell">
+                                Pending Responses
+                            </div>
+                            <div class="cell">
+                                Accepted Responses
+                            </div>
+                            <div class="cell">
+                                Rejected Responses
+                            </div>
+                            <div class="cell">
+                                Leaves
+                            </div>
+                        </div>
+                        {{#each cDetails}}
+                            <div class="row">
+                                <div class="cell" data-title="Name">
+                                    {{this.name}}
+                                </div>
+                                <div class="cell" data-title="Pending Complains">
+                                    {{this.pc}}
+                                </div>
+                                <div class="cell" data-title="Accepted Complains">
+                                    {{this.ac}}
+                                </div>
+                                <div class="cell" data-title="Rejected Complains">
+                                    {{this.rc}}
+                                </div>
+                                <div class="cell" data-title="Pending Responses">
+                                    {{this.pr}}
+                                </div>
+                                <div class="cell" data-title="Accepted Responses">
+                                    {{this.ar}}
+                                </div>
+                                <div class="cell" data-title="Rejected Responses">
+                                    {{this.rr}}
+                                </div>
+                                <div class="cell" data-title="Leaves">
+                                    {{this.leaves}}
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                {{/if}}  
+                {{#if mncInfo}}
+                    <div class="table find_table">
+                        <div class="row niceblue">
+                            <div class="cell">
+                                Name
+                            </div>
+                            <div class="cell">
+                                Pending Complains
+                            </div>
+                            <div class="cell">
+                                Completed Complains
+                            </div>
+                            <div class="cell">
+                                Uncompleted Complains
+                            </div>
+                            <div class="cell">
+                                Failed Complains
+                            </div>
+                        </div>
+                        {{#each cDetails}}
+                            <div class="row">
+                                <div class="cell" data-title="Name">
+                                    {{this.name}}
+                                </div>
+                                <div class="cell" data-title="Pending Complains">
+                                    {{this.pc}}
+                                </div>
+                                <div class="cell" data-title="Completed Complains">
+                                    {{this.cc}}
+                                </div>
+                                <div class="cell" data-title="Uncompleted Complains">
+                                    {{this.uc}}
+                                </div>
+                                <div class="cell" data-title="Failed Complains">
+                                    {{this.fc}}
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                {{/if}}
+                {{#if notification}}
+                    <div class="all_notification">
+                        {{#each nDetails}}
+                            <div class="notification {{this.class}}">
+                                <div class="timeanddate">
+                                    {{this.date}}
+                                </div>
+                                <div class="notification_message"> <span>{{this.user}}</span> {{this.message}}</div>
+                            </div>
+                        {{/each}}
+                    </div>
+                {{/if}}      
+        </div>
+    </div>
+</body>
+
+<script>
+
+    var currentArr = window.location.href.split('/');
+    var current = currentArr[currentArr.length - 1];
+    if(current == 'superfind' || current == 'superfindComplaint'){
+        document.getElementById('unsolvedcomps_button_text').style.color = 'whitesmoke';
+        document.getElementById('superfindcomp_button').style.backgroundColor = 'black';
+    }
+    else if(current == 'midinfo'){
+        document.getElementById('allmidman_button').style.backgroundColor = 'black';
+        document.getElementById('midinfo_button_text').style.color = 'whitesmoke';
+    }
+    else if(current == 'mncinfo'){
+        document.getElementById('allmnc_button').style.backgroundColor = 'black';
+        document.getElementById('mncinfo_button_text').style.color = 'whitesmoke';
+    }
+    else{
+        document.getElementById('notifications').style.backgroundColor = 'black';
+        document.getElementById('notification_button_text').style.color = 'whitesmoke';
+    }
+
+    function responseVisible(){
+       document.getElementById('responseSubmit').style.visibility = 'visible';
+       document.getElementsByClassName('responseButton')[0].style.display = 'none';
+    }
+
+    setTimeout(function() { 
+    document.getElementsByClassName('message')[0].style.display = 'none';
+    document.getElementsByClassName('bar')[0].style.display = 'none';
+    }, 5000);
+</script>
+</html>

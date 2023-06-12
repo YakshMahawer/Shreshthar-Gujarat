@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shresthar Gujarat</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login_main">
+        <div class="logo_for_login">
+            <img src="official_logo.png" alt="jj" srcset="">
+        </div>
+        {{#if wrongotp}}
+            <div class="redError">WRONG OTP ENTERED</div>
+        {{/if}}
+        <div class="login_form">
+            <form action="/verify" method="post">
+                <label for="phone" class="enter_phone">Enter your phone number: </label>
+                <br>
+                <input type="text" class="enter_phone_input" name="phone" value={{number}} readonly>
+                <br>
+                <button disabled="disabled" class="login_getotp_button disabled_button">Get OTP</button>
+                <br>
+                <label for="phone" class="enter_phone">Enter OTP: </label>
+                <br>
+                <input type="number" class="enter_phone_input" min="1000" max="9999" name="otp" required>
+                <br>
+                <button type="submit" class="login_getotp_button">VERIFY</button>
+            </form>
+        </div>
+    </div>    
+</body>
+</html>

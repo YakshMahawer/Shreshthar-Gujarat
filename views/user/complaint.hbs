@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complain</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js" integrity="sha512-dQIiHSl2hr3NWKKLycPndtpbh5iaHLo6MwrXm7F0FM5e+kL2U16oE9uIwPHUl6fQBeCthiEuV/rzP3MiAB8Vfw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="complaint.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fasthand&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="complaint_main">
+        <div class="img_logo">
+            <a href="http://localhost:3000/"><img src="official_logo.png" alt="" srcset=""></a>
+        </div>
+        <p class="complaint_form">Complaint Form</p>
+        <form action="/complaint" method="post" onsubmit="return validateForm()">
+            <label for="date"><span>Date: </span></label>
+            <input type="date" name="date" id="date" readonly>
+            <br>
+            <label for="phone_number"><span>Phone Number: </span></label>
+            <input type="text" name="phone_number" id="phone_number" value={{credential}} readonly>
+            <br>
+            <label for="street_add"><span>Street Address: </span> </label>
+            <input type="text" name="street_add" id="street_add" required>
+            <br>
+            <label for="area"><span>Area: </span></label>
+            <select name="area" id="area">
+                <option value="manjalpur">Manjalpur</option>
+                <option value="makarpura">Makarpura</option>
+                <option value="waghodiya">Waghodiya</option>
+                <option value="akota">Akota</option>
+                <option value="kareilibagh">Kareilibagh</option>
+                <option value="alkapuri">Alkapuri</option>
+            </select>
+            <br>
+            <input type="text" name="lat" id="lat" style="display: none;">
+            <input type="text" name="long" id="long" style="display: none;">
+            <br>
+            <label for="complaint_abt"><span class="special_treat">What is your Complaint about?</span> </label>
+            <br>
+            <input type="text" name="complaint_abt" id="complaint_abt" placeholder="Mention Topic Here..." required>
+            <br>
+            <label for="complaint_details"><span>Complaint Details: </span></label>
+            <textarea name="complaint_details" id="complaint_details" cols="35" rows="4" placeholder="Write About Your Complain" required></textarea>
+            <br>
+            <div class="set_upload">
+                <div class="set_choose_file">
+                    <label for="add_proof"><i class="fa-solid fa-plus add_proof_icon" style="color: #000000;"></i><span style="margin-left: 4px;">Choose File</span></label>
+                    <input type="file" name="add_proof" id="add_proof" onchange="readURL()" accept="Image/*">
+                </div>
+                <br>
+                <div class="or_para">
+                    <p>OR</p>
+                </div>
+                <div class="set_cam_button">
+                    <button class="open_cam" onclick="open_camera()" type="button"><i class="fa-solid fa-camera" style="color: #000000;"></i></button>
+                    <span>Open Camera</span>
+                </div>
+                <br>
+            </div>
+            
+            <div class="set_preview">
+                <div class="submit_and_response">
+                    <input type="text" name="cam_proof" style="display: none;" value="" id="cam_img">
+                    <p id="cam_link" name="cam_link"></p>
+                    <button type="submit" class="final_submit">Submit</button>
+                </div>
+                <div class="preview">
+                    <figure>
+                        <img id = "hey" src="" alt="" srcset="">
+                        <figcaption>Your Uploaded Image</figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="webcam"></div>
+        </form>
+        <button class="close_cam" onclick="close_camera()" id="close_cam"><i class="material-icons">close</i></button>
+        <button class="click_photo" onclick="click_photo(), close_camera()" id="click_photo"><i class="material-icons">camera</i></button>
+    </div>
+
+
+     <form action="/logout" method="post">
+         <button type ="submit" class="logOutButton">LogOut</button>
+     </form>
+</body>
+<script>
+    navigator.geolocation.getCurrentPosition(showPosition);
+    function showPosition(position) {
+        document.getElementById("lat").value = position.coords.latitude;
+        document.getElementById("long").value = position.coords.longitude;
+    }
+    function validateForm(){
+        if(document.getElementById('cam_img').value.length == 0){
+            alert("Upload or Click Image");
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    function readURL(){
+        var Element = document.getElementById("add_proof");
+        const url = URL.createObjectURL(Element.files[0]);
+        const selectedfile = Element.files;
+        if (selectedfile.length > 0) {
+            const [imageFile] = selectedfile;
+            const fileReader = new FileReader();
+            fileReader.onload = () => {
+                const srcData = fileReader.result;
+                console.log(srcData);
+                document.getElementsByClassName('preview')[0].style.visibility = 'visible';
+                document.getElementById('hey').src = srcData;
+                document.getElementById("cam_img").value = srcData;
+                document.getElementById("cam_link").innerHTML = "Your selected image is uploaded";
+            };
+            fileReader.readAsDataURL(imageFile);
+        }
+
+    }
+    window.history.pushState("", "", '/complaint');
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = String(date.getMonth()+1).padStart(2,"0");
+    var day = String(date.getDate()).padStart(2,"0");
+    var today_date = year + '-' + month + '-' + day;
+    var date_input = document.getElementById('date');
+    date_input.value = today_date;
+    function open_camera(){
+        document.getElementsByClassName("webcam")[0].style.zIndex = "1";
+        Webcam.set({
+            width:1200,
+            height: 700,
+            image_format: 'jpeg',
+            jpeg_quality: 90
+        });
+        Webcam.attach('.webcam');
+        setTimeout(function(){ 
+            document.getElementById('close_cam').style.opacity = 1;
+            document.getElementById('click_photo').style.opacity = 1;
+        }, 1500);
+    }
+    function close_camera(){
+        Webcam.reset('.webcam');
+        document.getElementById('close_cam').style.opacity = 0;
+        document.getElementById('click_photo').style.opacity = 0;
+        document.getElementsByClassName("webcam")[0].style.zIndex = "-1";
+    }
+    function click_photo(){
+        Webcam.snap( function(data_uri) {
+            console.log(data_uri);
+            document.getElementsByClassName('preview')[0].style.visibility = 'visible';
+            document.getElementById('hey').src = data_uri;
+            document.getElementById('add_proof'),value = '';
+            document.getElementById("cam_img").value = data_uri;
+            document.getElementById("cam_link").innerHTML = "Your clicked image is uploaded";
+        });
+    }
+</script>
+</html>

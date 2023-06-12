@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="adlogin.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login_main">
+        <div class="logo_for_login">
+            <img src="official_logo.png" alt="jj" srcset="">
+        </div>
+        <div class="admin_panel_text">
+            <p>ADMIN PANEL</p>
+        </div>
+        {{#if wrongDetails}}
+        <div class="redError">INVALID USERNAME - PASSWORD</div>
+        {{/if}}
+        {{#if noUserExist}}
+        <div class="redError">NO SUCH ID EXIST</div>
+        {{/if}}
+        <div class="login_form">
+            <form action="adminlogin" method="post">
+                <label for="adminUsername">Enter your Username: </label>
+                <br>
+                <input type="text" name="adminUsername" id="adminUsername" required>
+                <br>
+                <label for="adminPassword">Enter your Password: </label>
+                <br>
+                <input type="password" name="adminPassword" id="adminPassword" required>
+                <br>
+                <div class="adlogin_submit">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

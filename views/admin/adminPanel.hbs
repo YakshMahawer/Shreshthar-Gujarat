@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="/adminPanel.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main">
+        <div class="sidebar">
+            <div class="official_logo">
+                <img src="/official_logo.png" alt="">
+            </div>
+            <div class="sideButton" id="uncheckedcomps_button">
+                <button onclick="location.href = '/uncheckedcomps'" id="uncheckedcomps_button_text">UNCHECKED COMPLAINTS</button>
+            </div>
+            <div class="sideButton" id="acceptedcomps_button">
+                <button onclick="location.href = '/acceptedcomps'" id="acceptedcomps_button_text">ACCEPTED COMPLAINTS</button>
+            </div>
+            <div class="sideButton" id="rejectedcomps_button">
+                <button onclick="location.href = '/rejectedcomps'" id="rejectedcomps_button_text">REJECTED COMPLAINTS</button>
+            </div>
+            <div class="sideButton" id="findcomps_button">
+                <button onclick="location.href = '/findcomps'" id="findcomps_button_text">FIND COMPLAINTS</button>
+            </div>
+            <div class="sideButton" id="compsres_button">
+                <button onclick="location.href = '/compsres'" id="compsres_button_text">COMPLAINTS RESPONSES</button>
+            </div>
+            <div class="sideButton" id="acceptedres_button">
+                <button onclick="location.href = '/acceptedres'" id="acceptedres_button_text">ACCEPTED RESPONSES</button>
+            </div>
+            <div class="sideButton" id="rejectedres_button">
+                <button onclick="location.href = '/rejectedres'" id="rejectedres_button_text">REJECTED RESPONSES</button>
+            </div>
+            <div class="sideButton" id="unrespondedcomps_button">
+                <button onclick="location.href = '/unrespondedcomps'" id="unrespondedcomps_button_text">UNRESPONDED COMPLAINTS</button>
+            </div>
+            <div class="sideButton" id="statistics_button">
+                <button onclick="location.href = '/statistics'" id="statistics_button_text">STATISTICS OF YOUR AREA</button>
+            </div>
+            <div class="sideButton" id="logout_button">
+                <form action="adminLogout" method="post">
+                    <button type="submit">LOG OUT</button>
+                </form>
+            </div>
+        </div>
+        <div class="workArea">
+                {{#if message}}
+                    <div class="message">
+                        <p class="messageText"><i class="fa-solid fa-circle-check" style="color: #54d24b;"></i> &nbsp {{sms}}</p>
+                    </div>
+                    <div class="bar">
+                        <div class="in"></div>
+                    </div>
+                {{/if}}
+                {{#if byDefault}}
+                <div class="default">
+                    <img src="welcome.png" alt="">
+                    <p>Ready to solve complains <span class="admin_name">{{currentAdmin}}</span>...</p>
+                </div>
+                {{/if}}
+                {{#if uncheckedc}}
+                    <div class="table">
+                        <div class="row header">
+                            <div class="cell">
+                                Complaint ID
+                            </div>
+                            <div class="cell">
+                                Title
+                            </div>
+                            <div class="cell">
+                                Area
+                            </div>
+                            <div class="cell">
+                                Action
+                            </div>
+                        </div>
+                        {{#each uncheckedcomplaint}}
+                            <div class="row">
+                                <div class="cell" data-title="Complaint ID">
+                                    {{this._id}}
+                                </div>
+                                <div class="cell" data-title="Title">
+                                    {{this.complaint_topic}}
+                                </div>
+                                <div class="cell" data-title="Area">
+                                    {{this.area}}
+                                </div>
+                                <div class="cell" data-title="Action">
+                                    <button type="submit" onclick="location.href = '/complaint/{{this._id}}'" class="open_button">OPEN</button>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                {{/if}}
+                {{#if acceptedc}}
+                <div class="table">
+                        <div class="row green">
+                            <div class="cell">
+                                Complaint ID
+                            </div>
+                            <div class="cell">
+                                Title
+                            </div>
+                            <div class="cell">
+                                Area
+                            </div>
+                            <div class="cell">
+                                Action
+                            </div>
+                        </div>
+                        {{#each acceptedcomplaint}}
+                            <div class="row">
+                                <div class="cell" data-title="Complaint ID">
+                                    {{this._id}}
+                                </div>
+                                <div class="cell" data-title="Title">
+                                    {{this.complaint_topic}}
+                                </div>
+                                <div class="cell" data-title="Area">
+                                    {{this.area}}
+                                </div>
+                                <div class="cell" data-title="Action">
+                                    <button type="submit" onclick="location.href = '/complaint/{{this._id}}'" class="open_button">OPEN</button>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                {{/if}}
+                {{#if rejectedc}}
+                <div class="table">
+                        <div class="row red">
+                            <div class="cell">
+                                Complaint ID
+                            </div>
+                            <div class="cell">
+                                Title
+                            </div>
+                            <div class="cell">
+                                Area
+                            </div>
+                            <div class="cell">
+                                Action
+                            </div>
+                        </div>
+                        {{#each rejectedcomplaint}}
+                            <div class="row">
+                                <div class="cell" data-title="Complaint ID">
+                                    {{this._id}}
+                                </div>
+                                <div class="cell" data-title="Title">
+                                    {{this.complaint_topic}}
+                                </div>
+                                <div class="cell" data-title="Area">
+                                    {{this.area}}
+                                </div>
+                                <div class="cell" data-title="Action">
+                                    <button type="submit" onclick="location.href = '/complaint/{{this._id}}'" class="open_button">OPEN</button>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                {{/if}}
+                {{#if complaintInfo}}
+                    <img src="/combg.png" alt="" class="backimg">
+                    <div class="complaintMainDiv">
+                        {{#with cDetails}}
+                        <div class="complaint_detail_text">COMPLAINT DETAILS</div>
+                        <div class="full_complaint_detail">
+                        <div class="complaintImage">
+                            <img src={{cam_proof}} alt="" srcset="">
+                        </div>
+                        <div class="complaintInDetail">
+                            <div class="ID">
+                                <span class="idValue">#{{_id}}</span>
+                            </div>
+                            <div class="complaintDate">
+                                <span class="dateKey key">Date: </span><span class="dateValue">&nbsp {{date}}</span>
+                            </div>
+                            <div class="complaintTopic">
+                                <span class="topicKey key">Subject: </span><span class="topicValue">&nbsp {{complaint_topic}}</span>
+                            </div>
+                            <div class="complaintDescription">
+                                <span class="descriptionKey key">Description: </span><br><span class="descriptionValue">{{complaint_desc}}</span>
+                            </div>
+                            <div class="complaintArea">
+                                <span class="areaKey key">Area: </span><span class="areaValue">&nbsp {{area}}</span>
+                            </div>
+                             <div class="complaintAddress">
+                                <span class="addressKey key">Address: </span><span class="addressValue">&nbsp {{street_adress}}</span>
+                            </div>
+                        </div>
+                        </div>
+                        {{/with}}
+                        {{#if complainFromUser}}
+                        {{#with cDetails}}
+                            <div class="checkComplaint">
+                                <div class="acc_rec_button">
+                                    <form action="complainResultPass" method="post"> 
+                                        <input type="text" name = "cID" id="cID" value={{_id}} style="visibility: hidden;">                          
+                                        <button class="acceptComplain" type="submit">Accept</button>
+                                    </form>
+                                    <button class="rejectComplain" onclick="showRejectOptionDiv()">Reject</button>
+                                </div>
+                                <div id="rejectOption">
+                                    <div class="hideAgain">
+                                        <button onclick="hideRejectOptionDiv()" class="hide_x">X</button>
+                                    </div>
+                                    <br>
+                                    <form action="complainResultFail" method="post" class="reject_form">
+                                        <input type="text" name = "cID" id="cID" value={{_id}} style="visibility: hidden;"> 
+                                        <label for="rejectReason">Select The Reason for Rejection: </label>
+                                        <br>
+                                        <select name="rejectReason" id="rejectReason">
+                                            <option value="Irrelevent Complaint">Irrelevent Complaint</option>
+                                            <option value="Abusive Language Used">Abusive Language Used</option>
+                                            <option value="Wrong Details">Wrong Details</option>
+                                            <option value="Not Proper">Not Proper</option>
+                                        </select>
+                                        <br>
+                                        <button type="submit" class="rejectionReasonConfirm">CONFIRM</button>
+                                    </form>
+                            </div>
+                        {{/with}}
+                        {{/if}}
+                        {{#if responseFromMNC}}
+                        {{#with cDetails}}
+                            <div class="checkResponse">
+                                <div class="buttonsForResponse">
+                                    <div class="responseViewDiv">
+                                        <button onclick="responseOpen()" class="responseViewButton">Open PDF</button>
+                                    </div>
+                                    <button onclick="responseClose()" class="closePDF" style="display: none;"><i class="fa-solid fa-arrow-left"></i></button>
+                                    <div class="responseForms">
+                                        <form action="/acceptedResponse/{{_id}}" method="post">
+                                            <button type="submit" class="acceptResponse">Accept Response</button>
+                                        </form>
+                                        <form action="/failComplain/{{_id}}" method="post">
+                                            <button type="submit" class="failComplain">Fail Complain</button>
+                                        </form>
+                                        <form action="/rejectResponse/{{_id}}" method="post">
+                                            <button type="submit" class="rejectResponse">Reject Response</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <iframe src={{responseFile}} id="pdfView"></iframe>
+                            </div>
+                        {{/with}}
+                        {{/if}}
+                        {{#if similarComp}}
+                        <div class="similar_comp_div">      
+                        <p class="similarTo">We Found Complains From Same Radius<input id="chid" value ={{childComplaintID}} style="visibility: hidden;"></input></p>
+                        <div class="table">
+                        <div class="row black">
+                            <div class="cell">
+                                Complaint ID
+                            </div>
+                            <div class="cell">
+                                Photo
+                            </div>
+                            <div class="cell">
+                                Title
+                            </div>
+                            <div class="cell">
+                                Description
+                            </div>
+                            <div class="cell">
+                                Action
+                            </div>
+                        </div>
+                        {{#each sComplaint}}
+                            <div class="row">
+                                <div class="cell" data-title="Complaint ID">
+                                    {{this._id}}
+                                </div>
+                                <div class="cell sim_photo" data-title="Photo">
+                                    <img src={{this.cam_proof}} alt="" srcset="">
+                                </div>
+                                <div class="cell" data-title="Title">
+                                    {{this.complaint_topic}}
+                                </div>
+                                <div class="cell" data-title="Description">
+                                    {{this.complaint_desc}}
+                                </div>
+                                <div class="cell" data-title="Action">
+                                    <form action="/similar" method="post">
+                                        <input type="text" name="parentID" id="parentID" value={{this._id}} style="display: none;">
+                                        <input type="text" name="childID" id="childID" class = 'childIDClass' value='' style="display: none;">
+                                        <button type="submit">SIMILAR</button>
+                                    </form>  
+                                </div>
+                            </div>
+                        {{/each}}
+                        {{/if}}
+                        </div> 
+                    </div>                                 
+                    </div>
+                {{/if}}
+                {{#if findc}}
+                    <div class="find">
+                        <form action="/findComplaint" method="post">
+                            <input type="date" name="dateToFind" id="dateToFind" required>
+                            <button type="submit" class="dateToFindButton">FIND</button>
+                        </form>
+                        <form action="/findMonthComplaint" method="post">
+                              <select id="monthDropBox" name="monthDropBox" required>
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                            <button type="submit" class="dateToFindButton">FIND BY MONTH</button>
+                        </form>
+                        <form action="/findThisWeekComplaint" method="post">
+                            <button type="submit" class="dateToFindButton">THIS WEEK COMPLAINS</button>
+                        </form>
+                        <form action="/findAll" method="post">
+                            <button type="submit" class="dateToFindButton">ALL COMPLAINS</button>
+                        </form>
+                    </div>
+                    {{#if brougthList}}
+                        <div class="find_date">{{findDate}}</div>
+                        <div class="table find_table">
+                        <div class="row green">
+                            <div class="cell">
+                                Complaint ID
+                            </div>
+                            <div class="cell">
+                                Title
+                            </div>
+                            <div class="cell">
+                                Area
+                            </div>
+                            <div class="cell">
+                                Status
+                            </div>
+                            <div class="cell">
+                                Action
+                            </div>
+                        </div>
+                        {{#each cDetails}}
+                            <div class="row">
+                                <div class="cell" data-title="Complaint ID">
+                                    {{this._id}}
+                                </div>
+                                <div class="cell" data-title="Title">
+                                    {{this.complaint_topic}}
+                                </div>
+                                <div class="cell" data-title="Area">
+                                    {{this.area}}
+                                </div>
+                                <div class="cell" data-title="Status">
+                                    {{this.status.[0]}}
+                                </div>
+                                <div class="cell" data-title="Action">
+                                    <button type="submit" onclick="location.href = '/complaint/{{this._id}}'" class="open_button">OPEN</button>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                    {{/if}}
+                    {{#if thisWeekList}}
+                        <div class="table find_table">
+                        <div class="row green">
+                            <div class="cell">
+                                Date
+                            </div>
+                            <div class="cell">
+                                Complaint ID
+                            </div>
+                            <div class="cell">
+                                Title
+                            </div>
+                            <div class="cell">
+                                Area
+                            </div>
+                            <div class="cell">
+                                Status
+                            </div>
+                            <div class="cell">
+                                Action
+                            </div>
+                        </div>
+                        {{#each cDetails}}
+                            <div class="row">
+                                <div class="cell" data-title="Date">
+                                    {{this.date}}
+                                </div>
+                                <div class="cell" data-title="Complaint ID">
+                                    {{this._id}}
+                                </div>
+                                <div class="cell" data-title="Title">
+                                    {{this.complaint_topic}}
+                                </div>
+                                <div class="cell" data-title="Area">
+                                    {{this.area}}
+                                </div>
+                                <div class="cell" data-title="Status">
+                                    {{this.status.[0]}}
+                                </div>
+                                <div class="cell" data-title="Action">
+                                    <button type="submit" onclick="location.href = '/complaint/{{this._id}}'" class="open_button">OPEN</button>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                    {{/if}}
+                {{/if}}
+                {{#if uncheckedr}}
+                <div class="table">
+                        <div class="row newBlue">
+                            <div class="cell">
+                                Complaint ID
+                            </div>
+                            <div class="cell">
+                                Title
+                            </div>
+                            <div class="cell">
+                                Area
+                            </div>
+                            <div class="cell">
+                                Action
+                            </div>
+                        </div>
+                        {{#each respondedcomplaint}}
+                            <div class="row">
+                                <div class="cell" data-title="Complaint ID">
+                                    {{this._id}}
+                                </div>
+                                <div class="cell" data-title="Title">
+                                    {{this.complaint_topic}}
+                                </div>
+                                <div class="cell" data-title="Area">
+                                    {{this.area}}
+                                </div>
+                                <div class="cell" data-title="Action">
+                                    <button type="submit" onclick="location.href = '/complaint/{{this._id}}'" class="open_button">OPEN</button>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                {{/if}}
+                {{#if acceptedr}}
+                    <div class="table">
+                        <div class="row green">
+                            <div class="cell">
+                                Complaint ID
+                            </div>
+                            <div class="cell">
+                                Title
+                            </div>
+                            <div class="cell">
+                                Area
+                            </div>
+                            <div class="cell">
+                                Action
+                            </div>
+                        </div>
+                        {{#each acceptedresponses}}
+                            <div class="row">
+                                <div class="cell" data-title="Complaint ID">
+                                    {{this._id}}
+                                </div>
+                                <div class="cell" data-title="Title">
+                                    {{this.complaint_topic}}
+                                </div>
+                                <div class="cell" data-title="Area">
+                                    {{this.area}}
+                                </div>
+                                <div class="cell" data-title="Action">
+                                    <button type="submit" onclick="location.href = '/complaint/{{this._id}}'" class="open_button">OPEN</button>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                {{/if}}
+                {{#if rejectedr}}
+                    <div class="table">
+                        <div class="row red">
+                            <div class="cell">
+                                Complaint ID
+                            </div>
+                            <div class="cell">
+                                Title
+                            </div>
+                            <div class="cell">
+                                Area
+                            </div>
+                            <div class="cell">
+                                Action
+                            </div>
+                        </div>
+                        {{#each rejectedresponses}}
+                            <div class="row">
+                                <div class="cell" data-title="Complaint ID">
+                                    {{this._id}}
+                                </div>
+                                <div class="cell" data-title="Title">
+                                    {{this.complaint_topic}}
+                                </div>
+                                <div class="cell" data-title="Area">
+                                    {{this.area}}
+                                </div>
+                                <div class="cell" data-title="Action">
+                                    <button type="submit" onclick="location.href = '/complaint/{{this._id}}'" class="open_button">OPEN</button>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                {{/if}}
+                {{#if unrespondedr}}
+                    <div class="table">
+                        <div class="row red">
+                            <div class="cell">
+                                Complaint ID
+                            </div>
+                            <div class="cell">
+                                Title
+                            </div>
+                            <div class="cell">
+                                Area
+                            </div>
+                            <div class="cell">
+                                Action
+                            </div>
+                        </div>
+                        {{#each unrespondedcomplaints}}
+                            <div class="row">
+                                <div class="cell" data-title="Complaint ID">
+                                    {{this._id}}
+                                </div>
+                                <div class="cell" data-title="Title">
+                                    {{this.complaint_topic}}
+                                </div>
+                                <div class="cell" data-title="Area">
+                                    {{this.area}}
+                                </div>
+                                <div class="cell" data-title="Action">
+                                    <button type="submit" onclick="location.href = '/complaint/{{this._id}}'" class="open_button">OPEN</button>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                {{/if}}
+                {{#if stats}}
+                    <div class="statisticsDiv">
+                        <div class="chart1">
+                            <div class="chart_heading">ADMIN ANALYSIS CHART</div>
+                            <canvas id="myChart"></canvas>
+                        </div>
+                        <div class="chart2">
+                            <div class="chart_heading">AREA-WISE COMPLAINT CHART</div>
+                            <canvas id="myChart2" width="400" height="400"></canvas>
+                        </div>
+                    </div>
+                    <div class="middlemanStats">
+                            <input type="text" id="mt" value={{mt}}>
+                            <input type="text" id="ma" value={{ma}}>
+                            <input type="text" id="mr" value={{mr}}>
+                            <input type="text" id="mp" value={{mp}}>
+                            <input type="text" id="mc" value={{mc}}>
+                            <input type="text" id="muc" value={{muc}}>
+                            <input type="text" id="mf" value={{mf}}>
+                            <input type="text" id="mres" value={{mres}}>
+                        </div>
+                        <div class="area1Stats">
+                            <input type="text" id="a1t" value={{a1t}}>
+                            <input type="text" id="a1a" value={{a1a}}>
+                            <input type="text" id="a1r" value={{a1r}}>
+                            <input type="text" id="a1p" value={{a1p}}>
+                            <input type="text" id="a1c" value={{a1c}}>
+                            <input type="text" id="a1uc" value={{a1uc}}>
+                            <input type="text" id="a1f" value={{a1f}}>
+                            <input type="text" id="a1res" value={{a1res}}>
+                        </div>
+                        <div class="area2Stats">
+                            <input type="text" id="a2t" value={{a2t}}>
+                            <input type="text" id="a2a" value={{a2a}}>
+                            <input type="text" id="a2r" value={{a2r}}>
+                            <input type="text" id="a2p" value={{a2p}}>
+                            <input type="text" id="a2c" value={{a2c}}>
+                            <input type="text" id="a2uc" value={{a2uc}}>
+                            <input type="text" id="a2f" value={{a2f}}>
+                            <input type="text" id="a2res" value={{a2res}}>
+                        </div>
+                {{/if}}
+        </div>
+    </div>
+</body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="https://code.jscharting.com/latest/jscharting.js"></script>
+<script type="text/javascript" src="https://code.jscharting.com/latest/modules/types.js"></script>
+<script>
+       //For Finding currently which tab is user on and so to represent Current Tab on sidebar for better User Experience 
+        var currentArr = window.location.href.split('/');
+        var current = currentArr[currentArr.length - 1];
+        if(current == 'uncheckedcomps'){
+            document.getElementById('uncheckedcomps_button_text').style.color = 'whitesmoke';
+            document.getElementById('uncheckedcomps_button').style.backgroundColor = 'black';
+        }
+        else if(current == 'acceptedcomps'){
+            document.getElementById('acceptedcomps_button').style.backgroundColor = 'black';
+            document.getElementById('acceptedcomps_button_text').style.color = 'whitesmoke';
+        }
+        else if(current == 'rejectedcomps'){
+            document.getElementById('rejectedcomps_button').style.backgroundColor = 'black';
+            document.getElementById('rejectedcomps_button_text').style.color = 'whitesmoke';
+        }
+        else if(current == 'findcomps' || current == 'findComplaint'){
+            document.getElementById('findcomps_button').style.backgroundColor = 'black';
+            document.getElementById('findcomps_button_text').style.color = 'whitesmoke';
+        }
+        else if(current == 'compsres'){
+            document.getElementById('compsres_button').style.backgroundColor = 'black';
+            document.getElementById('compsres_button_text').style.color = 'whitesmoke';
+        }
+        else if(current == 'acceptedres'){
+            document.getElementById('acceptedres_button').style.backgroundColor = 'black';
+            document.getElementById('acceptedres_button_text').style.color = 'whitesmoke';
+        }
+        else if(current == 'rejectedres'){
+            document.getElementById('rejectedres_button').style.backgroundColor = 'black';
+            document.getElementById('rejectedres_button_text').style.color = 'whitesmoke';
+        }
+        else if(current == 'unrespondedcomps'){
+            document.getElementById('unrespondedcomps_button').style.backgroundColor = 'black';
+            document.getElementById('unrespondedcomps_button_text').style.color = 'whitesmoke';
+        }
+        else if(current == 'statistics'){
+            document.getElementById('statistics_button').style.backgroundColor = 'black';
+            document.getElementById('statistics_button_text').style.color = 'whitesmoke';
+        }
+
+        setTimeout(function() { 
+            document.getElementsByClassName('message')[0].style.display = 'none';
+            document.getElementsByClassName('bar')[0].style.display = 'none';
+         }, 5000);
+        
+        function getChildID(){
+            var n = document.getElementsByClassName('childIDClass').length;
+            console.log(n);
+            for(var i = 0; i < n; i++){
+                console.log(i);
+                document.getElementsByClassName('childIDClass')[i].value = document.getElementById('chid').value;
+            }
+        }
+        getChildID();
+
+        //Pie Chart...
+        var area1 = [document.getElementById('a1p').value, document.getElementById('a1a').value, document.getElementById('a1r').value, document.getElementById('a1res').value, document.getElementById('a1c').value, document.getElementById('a1uc').value, document.getElementById('a1f').value];
+        var area2 = [document.getElementById('a2p').value, document.getElementById('a2a').value, document.getElementById('a2r').value, document.getElementById('a2res').value, document.getElementById('a2c').value, document.getElementById('a2uc').value, document.getElementById('a2f').value];
+        
+        var xValues = ["Accepted", "Responded", "Completed", "Uncompleted", "Failed", "Rejected", "Pending"];
+        var yValues = [document.getElementById('ma').value, document.getElementById('mres').value, document.getElementById('mc').value, document.getElementById('muc').value, document.getElementById('mf').value, document.getElementById('mr').value, document.getElementById('mp').value];
+        var barColors = [
+        "#27ae60",
+        "#00aba9",
+        "#39ae27",
+        "#de2121",
+        "#de8921",
+        "#ea6153",
+        "#ffff00"
+        ];
+
+        new Chart("myChart", {
+            type: "pie",
+            data: {
+                labels: xValues,
+                datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+                }]
+            }
+        });
+
+        //Dual Bar - Graph
+        var ctx = document.getElementById("myChart2").getContext("2d");
+        var data = {
+        labels: ["Pending", "Accepted", "Rejected", "Responded", "Completed", "Uncompleted", "Failed"],
+        datasets: [{
+            label: "Alkapuri",
+            backgroundColor: "blue",
+            data: area1
+        }, {
+            label: "Kareilibagh",
+            backgroundColor: "red",
+            data: area2
+        }]
+        };
+
+        var myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: {
+            barValueSpacing: 20,
+            scales: {
+            yAxes: [{
+                ticks: {
+                min: 0,
+                }
+            }]
+            }
+        }
+        });
+
+
+    function showRejectOptionDiv(){
+        document.getElementById('rejectOption').style.visibility = 'visible';
+        document.getElementsByClassName('full_complaint_detail')[0].classList.add('blurClass');
+        document.getElementsByClassName('similar_comp_div')[0].classList.add('blurClass');
+    }
+    function hideRejectOptionDiv(){
+        document.getElementById('rejectOption').style.visibility = 'hidden';
+        document.getElementsByClassName('full_complaint_detail')[0].classList.remove('blurClass');
+        document.getElementsByClassName('similar_comp_div')[0].classList.remove('blurClass');
+
+    }
+    function responseOpen(){
+        document.getElementsByClassName('full_complaint_detail')[0].classList.add('blurClass');
+        document.getElementsByClassName('sidebar')[0].classList.add('blurClass');
+        document.getElementById('pdfView').style.visibility = 'visible';
+        document.getElementsByClassName('responseViewButton')[0].style.visibility = 'hidden';
+        document.getElementsByClassName('closePDF')[0].style.display = 'block';
+    }
+
+    function responseClose(){
+        document.getElementsByClassName('full_complaint_detail')[0].classList.remove('blurClass');
+        document.getElementsByClassName('sidebar')[0].classList.remove('blurClass');
+        document.getElementById('pdfView').style.visibility = 'hidden';
+        document.getElementsByClassName('responseViewButton')[0].style.visibility = 'visible';
+        document.getElementsByClassName('closePDF')[0].style.display = 'none';
+    }
+
+</script>
+</html>

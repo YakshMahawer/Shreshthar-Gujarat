@@ -1,0 +1,171 @@
+body{
+    margin: 0px;
+    background-color: white;
+    overflow-x: hidden;
+}
+
+/* width */
+::-webkit-scrollbar {
+width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+background: #ffffff; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #7cfc00; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555; 
+}
+
+.header{
+    display: flex;
+    margin-top: 6px;
+}
+
+.emblem img{
+    height: 100px;
+    width: 100px;
+}
+
+.logo img{
+    height: 86px;
+    margin-left: -22px;
+    margin-top: 4px;
+}
+
+.sbharat img{
+    height: 52px;
+    margin-left: 673px;
+    margin-top: 21px;
+}
+
+.humdo img{
+    height: 60px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.beti img{
+    height: 60px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.mindia img{
+    height: 50px;
+    margin-top: 18px;
+    margin-left: 21px;
+}
+
+.dindia img{
+    height: 50px;
+    margin-top: 18px;
+    margin-left: 21px;
+}
+
+.banner img{
+    width: 1536px;
+    margin-top: 8px;
+    height: 380px;
+}
+
+.complain_button{
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+    border: none;
+    font-size: 43px;
+    padding: 18px;
+    background-color: #FF9933;
+    position: absolute;
+    left: 329px;
+    top: 472px;
+}
+
+.track_button{
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+    border: none;
+    font-size: 43px;
+    padding: 18px;
+    background-color: #138808;
+    position: absolute;
+    left: 720px;
+    top: 472px;
+}
+
+.complain_button:hover{
+    background-color: #f17c08;
+}
+
+.track_button:hover{
+    background-color: #1fed0c;
+}
+
+.slide{
+    display: flex;
+    margin-bottom: 30px;
+    background-color: papayawhip;
+    width: 1450px;
+    margin-left: 20px;
+    padding: 50px 15px;
+    clip-path: polygon(6% 0, 100% 0, 100% 74%, 94% 100%, 0 100%, 0 18%);
+}
+
+.slide_img img{
+    border-radius: 50%;
+    height: 180px;
+    width: 180px;
+    margin-left: 25px;
+    margin-top: 15px;
+}
+
+.content{
+    margin-top: 115px;
+}
+
+.reading{
+    margin-left: 30px;
+}
+
+.heading{
+    font-family: 'Kanit', sans-serif;
+    font-size: 45px;
+}
+
+.para{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 21px;
+    width: 1100px;
+    margin-top: 10px;
+}
+
+#elon img{
+    object-fit: cover;
+}
+
+#slide1{
+    transform: translateX(-200px);
+    opacity: 0;
+}
+
+#slide2{
+    transform: translateX(200px);
+    opacity: 0;
+}
+
+#slide3{
+    transform: translateX(-200px);
+    opacity: 0;
+}
+
+#slide4{
+    transform: translateX(200px);
+    opacity: 0;
+}

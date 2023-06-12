@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shresthar Gujarat</title>
+</head>
+<body>
+    <form action="/verify" method="post">
+        <label for="phone" >Enter your phone number: </label>
+        <input type="text" name="phone" value={{number}} readonly>
+        <button disabled="disabled">Get OTP</button>
+        <label for="phone">Enter OTP: </label>
+        <input type="number" name="otp" required>
+        <button type="submit">VERIFY</button>
+    </form> 
+    <p class="message">You entered wrong OTP...</p>   
+</body>
+</html>

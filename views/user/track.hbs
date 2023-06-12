@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your Complaint</title>
+    <link rel="stylesheet" href="track.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yesteryear&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="trackDiv">
+        <img src="track.png" alt="" id="trackBg">
+        <div class="logoImgOnTrack">
+            <a href="http://localhost:3000/"><img src="official_logo.png" alt=""></a>
+            <p class="trackComplaintText">Track Complains</p>
+        </div>
+        <input type="text" value= {{status_arr}} id="status_string">
+        {{#each cDetails}}
+        <div class="filedComplain">
+            <div class="trackImg">
+                <img src={{this.cam_proof}} alt="">
+            </div>
+            <div class="trackPart1">
+                <div class="track_date track_text">
+                    <div class="dateOfFilingComplain track_key"><i class="fa-solid fa-calendar-days" style="color: #444546;"></i> Date: </div>
+                    <div class="dateOfFilingComplainValue">{{this.date}}</div>
+                </div> 
+                <div class="track_topic track_text">
+                    <div class="topicOfFilingComplain track_key"><i class="fa-solid fa-message" style="color: #3e3f42;"></i> Topic: </div>
+                    <div class="topicOfFilingComplainValue">{{this.complaint_topic}}</div>
+                </div> 
+                <div class="track_description track_text">
+                    <div class="descOfFilingComplain track_key"><i class="fa-solid fa-envelope" style="color: #3c3d3e;"></i> Description: </div>
+                    <div class="descOfFilingComplainValue">{{this.complaint_desc}}</div>
+                </div> 
+                <div class="track_address track_text">
+                    <div class="addressOfFilingComplain track_key"><i class="fa-solid fa-address-book" style="color: #494d55;"></i> Address: </div>
+                    <div class="addressOfFilingComplainValue">{{this.street_adress}}</div>
+                </div>     
+                <div class="track_area track_text">
+                    <div class="areaOfFilingComplain track_key"><i class="fa-solid fa-map" style="color: #45494f;"></i> Area: </div>
+                    <div class="areaOfFilingComplainValue">{{this.area}}</div>
+                </div>
+                <div class="track_middleman track_text">
+                    <div class="midmanOfFilingComplain track_key"><i class="fa-solid fa-circle-user" style="color: #40444a;"></i> Verified By: </div>
+                    <div class="midmanOfFilingComplainValue">{{this.middleman}}</div>
+                </div>
+                <div class="track_reason track_text">
+                    <div class="reasonOfRejectingComplain track_key"><i class="fa-solid fa-note-sticky" style="color: #404245;"></i> Reason: </div>
+                    <div class="topicOfRejectingComplainValue">{{this.reason}}</div>
+                </div>
+                <div class="track_responseFile track_text">
+                    <div class="responseOfFilingComplain track_key"><i class="fa-solid fa-file-pdf" style="color: #3d3f43;"></i> Response File: </div>
+                    <div class="responseOfFilingComplainValue"><a href={{this.responseFile}} download="ComplaintResponse{{this._id}}"><button type="button">Download</button></a></div>
+                </div>
+            </div>
+            <div class="tracking">
+                <div class="statusDates">
+                    {{#each this.statusTrackDates}}                        
+                        <input type="text" value={{this}} class="eachStatusDateIn">
+                        <div class="eachStatusDate"></div>
+                    {{/each}}
+                </div>
+                <div class="status">
+                    {{#each this.status}}
+                        <div class="status_entry">--------<i class="fa-solid fa-circle-check" style="color: #66ec4b;"></i> {{this}}</div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <form action="/logout" method="post">
+         <button type ="submit" class="logOutButton">LogOut</button>
+     </form>
+</body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script>
+    var i = 0;
+    while(i < document.getElementsByClassName('eachStatusDateIn').length){
+        var d = new Date(Number(document.getElementsByClassName('eachStatusDateIn')[i].value));
+        var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thrus', 'Fri', 'Sat'];
+        var dateString = d.getDate().toString() + "-" + d.getMonth().toString() + "-" + d.getFullYear().toString() + "  " + days[d.getDay()];
+        document.getElementsByClassName('eachStatusDate')[i].innerText = dateString;
+        i++;
+    }
+
+    document.getElementById('status_string').style.display = 'none';
+    function reason_response(){
+        var status_string = document.getElementById('status_string').value;
+        var status_arr = status_string.split("");
+        console.log(status_arr);
+
+        for(var i = 0; i < status_arr.length; i++){
+            if(status_arr[i] == "3"){
+                document.getElementsByClassName('track_reason')[i].style.display = 'flex';
+            }
+            else if(status_arr[i] == "5" || status_arr[i] == "7"){
+                document.getElementsByClassName('track_responseFile')[i].style.display = 'flex';
+            }
+        }
+    }
+
+    reason_response();
+</script>
+</html>

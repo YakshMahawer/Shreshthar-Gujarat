@@ -1,0 +1,68 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.login_main{
+    position: absolute;
+  top: 44%;
+  left: 49%;
+  transform: translate(-50%, -50%);
+  justify-content: center;
+  align-items: center;
+}
+
+img{
+    margin-bottom: 18px;
+    height: 75px;
+    align-items: center;
+    padding-left: 65px;
+}
+
+.enter_phone{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 24px;
+}
+
+.enter_phone_input{
+    margin-bottom: 12px;
+    margin-top: 11px;
+    border: 2px black solid;
+    padding: 8px 13px;
+    width: 305px;
+    font-size: 18px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.login_getotp_button{
+    border: none;
+    background-color: black;
+    color: aliceblue;
+    font-size: 21px;
+    font-family: 'Ubuntu', sans-serif;
+    padding: 4px 22px;
+    cursor: pointer;
+}
+
+.login_getotp_button:hover{
+    background-color: darkblue;
+}
+
+.disabled_button{
+    cursor: default;
+    opacity: 0.5;
+    background-color: rgb(57, 56, 56);
+    margin-bottom: 18px;
+}
+
+.disabled_button:hover{
+    background-color: rgb(57, 56, 56) !important;
+}
+
+.redError{
+    color: red;
+    font-size: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+}

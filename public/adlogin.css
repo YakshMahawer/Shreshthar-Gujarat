@@ -1,0 +1,64 @@
+*{
+    margin: 0px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.login_main{
+  position: absolute;
+  top: 48%;
+  left: 49%;
+  transform: translate(-50%, -50%);
+  justify-content: center;
+  align-items: center;
+  border: 2.5px black solid;
+  padding: 50px 50px;
+  border-radius: 8%;
+}
+
+img{
+    height: 100px;
+}
+.admin_panel_text{
+    font-family: 'Secular One', sans-serif !important;
+    font-size: 28px;
+    text-align: center;
+    letter-spacing: 2.5px;
+}
+
+input{
+    margin-bottom: 12px;
+    margin-top: 11px;
+    border: 2px black solid;
+    padding: 8px 13px;
+    width: 305px;
+    font-size: 18px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.login_form{
+    margin-top: 25px;
+    font-size: 20px;
+}
+
+.adlogin_submit{
+    text-align: center;
+}
+
+.adlogin_submit > button{
+    background-color: black;
+    color: aliceblue;
+    font-size: 22px;
+    padding: 5px 14px;
+    cursor: pointer;
+}
+
+.logo_for_login{
+    text-align: center;
+}
+
+.redError{
+    color: red;
+    font-size: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+}

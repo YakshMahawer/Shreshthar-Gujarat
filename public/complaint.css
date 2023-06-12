@@ -1,0 +1,191 @@
+.img_logo > a > img{
+    padding-left: 198px;
+    height: 75px;
+}
+*{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+}
+.complaint_main{
+    position: absolute;
+    top: 50%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+}
+
+.complaint_form{
+    font-size: 48px;
+    text-align: center;
+    font-family: 'Fasthand', cursive;
+    margin: 0px;
+}
+
+.complaint_main > form > input{
+    margin-bottom: 5px;
+}
+
+.logOutButton{
+    position: absolute;
+    top: 5px;
+    border: none;
+    background-color: #FF2400;
+    color: whitesmoke;
+    font-weight: 600;
+    font-size: 20px;
+    font-family: 'Ubuntu';
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+span{
+    display: table-caption;
+    width: 160px;
+}
+
+input, textarea{
+    border: 1.5px solid black;
+    padding: 3px 10px;
+}
+
+#complaint_details{
+    vertical-align: middle;
+}
+.special_treat{
+    width: 450px;
+    margin-bottom: 5px;
+}
+
+#add_proof{
+    border: none;
+    visibility: hidden;
+}
+
+.open_cam{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.open_cam > i{
+    font-size: 44px;
+}
+textarea{
+    margin-top: 10px;
+}
+
+.add_proof_icon{
+    font-size: 26px;
+    color: #000000;
+    border: 4px solid;
+    padding: 5px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+.webcam{
+    width: 1200px;
+    height: 650px;
+    margin-top: 5px;
+    top: -39px;
+    left: -352px;
+    position: absolute;
+    z-index: -1;
+}
+
+.click_photo i{
+    font-size: 100px;
+    color: red;
+}
+
+.click_photo{
+    background: none;
+    border: none;
+    z-index: 3;
+    position: absolute;
+    top: 536px;
+    left: 187px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.close_cam i{
+    font-size: 60px;
+    color: rgb(204, 197, 197);
+}
+
+.close_cam{
+    background: none;
+    border: none;
+    z-index: 3;
+    position: absolute;
+    top: -18px;
+    left: -346px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#cam_link{
+    overflow: hidden;
+    margin: none;
+}
+
+#hey{
+    height: 100px;
+}
+
+figure{
+    width: 190px;
+    margin: 0px;
+}
+
+.set_cam_button{
+    display: flex;
+}
+
+.set_cam_button > span{
+    margin: 42px 0px;
+}
+
+.set_upload{
+    display: flex;
+}
+
+.set_preview{
+    display: flex;
+}
+
+.set_choose_file{
+    width: 205px;
+}
+
+.or_para{
+    margin-right: 54px;
+    margin-top: 21px;
+}
+
+#cam_link{
+    margin: -9px 0px 10px 0px;
+}
+
+.preview{
+    margin-top: -21px;
+    visibility: hidden;
+}
+
+.submit_and_response{
+    width: 60%;
+}
+
+.final_submit{
+    border: none;
+    color: whitesmoke;
+    background-color: #000000;
+    padding: 5px 20px;
+    margin-top: 5px;
+    font-size: 22px;
+}
+
+.final_submit:hover{
+    background-color: navy;
+}

@@ -1,0 +1,460 @@
+*{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/*SideBar*/
+.sideButton > button, .sideButton > form > button{
+    margin-top: 5px;
+    cursor: pointer;
+    width: 227px;
+    padding: 14px 2px;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.sidebar{
+    width: 140px;
+    position: fixed;
+}
+
+.sidebar{
+    background-color: aliceblue;
+    width: 15%;
+    height: 697px;
+}
+
+/*SideBar*/
+
+.open_button{
+    border: none;
+    background-color: darkblue;
+    padding: 3px 12px;
+    font-size: 16px;
+    font-weight: 700;
+    color: whitesmoke;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 8%
+}
+
+.main{
+    display: flex;
+}
+
+.default{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-35%,-50%);
+    text-align: center;
+}
+
+.default > img{
+    height: 308px;
+}
+
+.default > p{
+    font-size: 28px;
+    margin: 0px;
+}
+
+.admin_name{
+    text-transform: uppercase;
+}
+
+.complaintImage > img{
+    height: 275px;
+    border: 5px black solid;
+}
+
+.backimg, .backtext{
+    top: 42%;
+    position: fixed;
+    z-index: -2;
+    height: 410px;
+    left: 61%;
+    opacity: 0.6;
+}
+
+.backtext{
+    opacity: 0.8;
+    top: 60%;
+    height: 270px;
+    left: 42%;
+    z-index: -1;
+}
+
+#rejectOption{
+    visibility: hidden;
+}
+
+#pdfView{
+    visibility: hidden;
+    position: absolute;
+    top: 10px;
+    left: 450px;
+    z-index: 10;
+    width: 800px;
+    height: 680px;
+}
+
+.closePDF{
+    color: aliceblue;
+    border: none;
+    background-color: #4c4e47;
+    top: -83px;
+    position: absolute;
+    font-size: 80px;
+    z-index: 10;
+    left: -89px;
+    padding: 5px 15px 5px 15px;
+    border-radius: 50%;
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.closePDF:hover{
+    background-color: black;
+}
+
+
+.official_logo > img{
+    height: 90px;
+}
+
+.find_table{
+    margin-top: 20px !important;
+}
+
+.find{
+    width: 1270px;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+    display: flex;
+}
+
+.find_date{
+    text-align: center;
+    margin-top: 20px;
+}
+
+#dateToFind{
+    padding: 2px 8px;
+    font-size: 18px;
+    border: 2px solid black;
+    margin-left: 6px;
+}
+
+#monthDropBox{
+    border: 2px black solid;
+    font-size: 18px;
+    padding: 4px;
+    margin-left: 35px;
+}
+
+.dateToFindButton{
+    border: none;
+    font-size: 20px;
+    padding: 4px 20px;
+    background-color: deeppink;
+    color: aliceblue;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-left: 9px;
+    cursor: pointer;
+}
+
+
+
+.middlemanStats, .area1Stats, .area2Stats{
+    display: none;
+}
+
+.full_complaint_detail{
+    margin-left: 30px;
+    display: flex;
+}
+
+.workArea{
+    margin-left: 15.5%;
+    overflow-x: hidden;
+}
+.chart_heading{
+    text-align: center;
+    font-size: 26px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+#myChart{
+    width: 500px;
+    height: 240px;
+}
+
+.statisticsDiv{
+    display: flex;
+}
+
+.statisticsDiv > div{
+    margin-left: 50px;
+}
+
+.sim_photo > img{
+    height: 120px;
+}
+
+.similarTo{
+    margin-left: 32px;
+}
+
+
+/* Upper Message showing after change*/
+.message{
+    text-align: center;
+    background-color: aliceblue;
+    padding: 6px 10px;
+}
+
+.messageText{
+    font-size: 18px;
+    margin: 0px;
+}
+
+.bar {
+    height: 4px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.bar .in {
+    animation: fill 5s linear 1;
+    height: 100%;
+    background-color: #54d24b;
+}
+  
+@keyframes fill {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* Upper Message showing after change*/
+
+.complaintInDetail{
+    margin: 0px 0px 0px 28px;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+#cID{
+    width: 10px;
+}
+
+.acc_rec_button{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.acceptComplain, .rejectComplain, .acceptResponse, .failComplain, .rejectResponse, .responseViewButton{
+    margin-right: 25px;
+    border: none;
+    color: whitesmoke;
+    font-size: 22px;
+    background-color: #27ae60;
+    padding: 6px 20px;
+    cursor: pointer;
+}
+
+.rejectComplain, .rejectResponse{
+    background-color: #ea6153;
+}
+
+.failComplain{
+    background-color: red;
+}
+
+.responseViewButton{
+    background-color: #273eae;
+}
+
+.complaintInDetail > div{
+    margin-bottom: 15px;
+}
+
+.complaint_detail_text{
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 35px;
+    font-family: 'Acme', sans-serif;
+    text-decoration: underline;
+}
+
+.key{
+    width: 180px;
+    display: inline-block;
+    color: #555652;
+}
+
+.idValue{
+    font-size: 25px !important;
+}
+
+#rejectOption{
+    background: white;
+    width: 35%;
+    visibility: hidden;
+    position: fixed;
+    height: 35%;
+    top: 46%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    border: 2px solid black;
+    z-index: 4;
+}
+
+.descriptionValue{
+    width: 600px;
+    display: block;
+    margin-top: -24px;
+    margin-left: 189px;
+}
+
+.reject_form{
+    font-size: 22px;
+    text-align: center;
+}
+
+.rejectionReasonConfirm{
+    font-size: 20px;
+    padding: 4px 16px;
+    border: none;
+    background-color: red;
+    color: whitesmoke;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.buttonsForResponse{
+    display: flex;
+    margin-top: 25px;
+    transform: translateX(13%);
+}
+
+.responseForms{
+    display: flex;
+}
+
+.hide_x{
+    border: none;
+    background-color: transparent;
+    font-size: 28px;
+    cursor: pointer;
+    margin: 10px;
+    font-weight: 700;
+}
+
+#rejectReason{
+    z-index: 2;
+    margin-top: 10px;
+    padding: 2px 10px;
+    font-size: 16px;
+}
+
+.blurClass{
+    filter: blur(4px);
+}
+
+.table {
+    margin: 0 0 40px 34px;
+    width: 1200px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    display: table;
+    }
+    @media screen and (max-width: 580px) {
+    .table {
+        display: block;
+    }
+    }
+    
+    .row {
+    display: table-row;
+    background: #f6f6f6;
+    }
+    .row:nth-of-type(odd) {
+    background: #e9e9e9;
+    }
+    .row.header {
+    font-weight: 900;
+    color: #ffffff;
+    background: #ea6153;
+    }
+    .row.green {
+        font-weight: 900;
+        color: #ffffff;
+        background: #27ae60;
+    }
+    .row.red {
+        font-weight: 900;
+        color: #ffffff;
+        background: red;
+    }
+    .row.newBlue {
+        font-weight: 900;
+        color: #ffffff;
+        background: #273eae;
+    } 
+    .row.black {
+        font-weight: 900;
+        color: #ffffff;
+        background: black;
+    }
+    @media screen and (max-width: 580px) {
+    .row {
+        padding: 14px 0 7px;
+        display: block;
+    }
+    .row.header {
+        padding: 0;
+        height: 6px;
+    }
+    .row.header .cell {
+        display: none;
+    }
+    .row .cell {
+        margin-bottom: 10px;
+    }
+    .row .cell:before {
+        margin-bottom: 3px;
+        content: attr(data-title);
+        min-width: 98px;
+        font-size: 10px;
+        line-height: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #969696;
+        display: block;
+    }
+    }
+    
+    .cell {
+    vertical-align: middle;
+    text-transform: capitalize;
+    padding: 6px 12px;
+    display: table-cell;
+    }
+    @media screen and (max-width: 580px) {
+    .cell {
+        padding: 2px 16px;
+        display: block;
+    }
+    }

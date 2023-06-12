@@ -1,0 +1,114 @@
+.tracking{
+    display: flex;
+}
+
+.filedComplain{
+    margin-left: 15px;
+    display: flex;
+    border-top: 2px black solid;
+    border-bottom: 2px black solid;
+    border-left: 2px black solid;
+    border-right: 2px black solid;
+    padding-bottom: 12px;
+    padding-top: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+}
+
+.filedComplain > div{
+    margin-left: 35px;
+}
+
+.trackImg > img{
+    height: 120px;
+    min-width: 200px;
+    max-width: 200px;
+}
+
+
+.logoImgOnTrack{
+    text-align: center;
+}
+
+.logoImgOnTrack > a > img{
+    height: 60px;
+}
+
+.status_entry:last-child{
+    color: blue;
+}
+
+.eachStatusDateIn{
+    display: none;
+}
+
+.trackPart1{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 17px;
+}
+
+.trackPart1 > div{
+    margin-bottom: 4px;
+}
+
+.logOutButton{
+    position: absolute;
+    top: 5px;
+    border: none;
+    background-color: #FF2400;
+    color: whitesmoke;
+    font-weight: 600;
+    font-size: 20px;
+    font-family: 'Ubuntu';
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+.descOfFilingComplainValue{
+    max-width: 340px;
+}
+.track_key{
+    width: 160px;
+}
+
+.track_text{
+    display: flex;
+}
+
+.track_responseFile, .track_reason{
+    display: none;
+}
+
+.tracking{
+    margin-left: 125px;
+    font-size: 16px;
+    font-family: 'Josefin Sans', sans-serif;
+    float: right;
+}
+
+#trackBg{
+    position: fixed;
+    z-index: -1;
+    height: 330px;
+    right: -66px;
+    top: 394px;
+    opacity: 0.8;
+}
+
+.statusDates > div, .status > div{
+    margin-bottom: 10px;
+}
+
+.bar{
+    width: 11px;
+    height: 3px;
+    background-color: #66ec4b;
+}
+
+.trackComplaintText{
+    font-family: 'Yesteryear', cursive;
+    margin: 0px;
+    font-size: 44px;
+}

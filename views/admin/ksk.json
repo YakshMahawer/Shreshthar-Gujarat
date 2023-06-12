@@ -1,0 +1,94 @@
+[
+    {
+        "voterId": "VOTER20",
+        "name": "Pushpa Raj",
+        "dob": "2003-01-01T14:56:59.301+00:00",
+        "area": "Manjalpur"
+
+    },
+    {
+        "voterId": "VOTER21",
+        "name": "Pathaan",
+        "dob": "2003-01-01T14:56:59.301+00:00",
+        "area": "Anand"
+
+    },
+    {
+        "voterId": "VOTER22",
+        "name": "Tiger",
+        "dob": "2003-01-01T14:56:59.301+00:00",
+        "area": "Rajkot"
+
+    },
+    {
+        "voterId": "VOTER23",
+        "name": "Gabbar Singh",
+        "dob": "2003-01-01T14:56:59.301+00:00",
+        "area": "Anand"
+
+    },
+    {
+        "voterId": "VOTER24",
+        "name": "Rancho",
+        "dob": "2003-01-01T14:56:59.301+00:00",
+        "area": "Rajkot"
+
+    },
+    {
+        "voterId": "VOTER25",
+        "name": "Raj Malhotra",
+        "dob": "2003-01-01T14:56:59.301+00:00",
+        "area": "Manjalpur"
+
+    },
+    {
+        "voterId": "VOTER26",
+        "name": "Vijay Deenanath Chauhan",
+        "dob": "2003-01-01T14:56:59.301+00:00",
+        "area": "Bhuj"
+
+    },
+    {
+        "voterId": "VOTER27",
+        "name": "Amrendra Bahubali",
+        "dob": "2003-01-01T14:56:59.301+00:00",
+        "area": "Manjalpur"
+
+    },
+    {
+        "voterId": "VOTER28",
+        "name": "Katappa",
+        "dob": "2003-01-01T14:56:59.301+00:00",
+        "area": "Junagadh"
+
+    },
+    {
+        "voterId": "VOTER29",
+        "name": "Bajirao Singham",
+        "dob": "2003-01-01T14:56:59.301+00:00",
+        "area": "Bharuch"
+
+    },
+    {
+        "voterId": "VOTER30",
+        "name": "Sangram Bhalerao",
+        "dob": "2003-01-01T14:56:59.301+00:00",
+        "area": "Waghodia"
+
+    },
+    {
+        "voterId": "VOTER31",
+        "name": "Kabir Singh",
+        "dob": "2003-01-01T14:56:59.301+00:00",
+        "area": "Makarpura"
+
+    },
+    {
+        "voterId": "VOTER032",
+        "name": "Shiva",
+        "dob": "2003-01-01T14:56:59.301+00:00",
+        "area": "Akota"
+
+    }
+
+]

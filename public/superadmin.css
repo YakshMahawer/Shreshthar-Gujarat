@@ -1,0 +1,98 @@
+.superfind{
+    display: flex;
+    height: 35px;
+    margin-bottom: 20px;
+}
+
+.superfind > form{
+    display: flex;
+}
+
+.dateToFindButton{
+    border: none;
+    font-size: 20px;
+    padding: 4px 20px;
+    background-color: deeppink;
+    color: aliceblue;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-left: 9px;
+    cursor: pointer;
+    width: max-content;
+    margin-right: 50px;
+}
+
+.superfind > form > input{
+    padding: 2px 8px;
+    font-size: 18px;
+    border: 2px solid black;
+    margin-left: 2px;
+}
+
+#midDropBox, #areaDropBox{
+    border: 2px black solid;
+    font-size: 18px;
+    padding: 4px;
+    margin-left: 35px;
+}
+
+.find_date{
+    text-align: center;
+}
+
+.cell{
+    text-align: center;
+}
+
+.all_notification{
+    width: 250%;
+    margin-left: 20px;
+}
+
+.notification{
+    padding: 12px 14px;
+    width: 100%;
+    background-color: #94f86b8f;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.timeanddate{
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 40px;
+}
+
+.notification_message{
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 40px;
+}
+
+.out{
+    background-color: #f73e3e8f !important;
+}
+
+.notification_message > span{
+    text-transform: capitalize;
+}
+
+.delete_form > form > button {
+    border: none;
+    font-size: 22px;
+    font-weight: bold;
+    background-color: red;
+    color: white;
+    padding: 4px 10px;
+}
+
+.delete_form > form > input{
+    border: 2px black solid;
+    padding: 5px 5px;
+    font-size: 20px;
+}
+
+.delete_form{
+    text-align: center;
+    margin-top: 30px;
+}
